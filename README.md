@@ -53,6 +53,11 @@ Analyzes cooperative health across **7 core metrics** aligned with official mini
 
 ![Health Diagnostics](docs/02_analisis_kesehatan_usaha.png)
 
+*The dashboard provides a detailed, granular breakdown of all 7 health indicators, accompanied by direct actionable insights from the Kora Think recommendation engine:*
+
+![Granular Health Diagnostics](docs/09_rincian_kesehatan_usaha.png)
+
+
 ---
 
 ### 3. Geospatial Potential Mapping (*Peta Potensi Wilayah*)
@@ -62,6 +67,11 @@ An interactive 3D map plotting neighboring villages. It displays:
 *   **Geospatial Clustering**: Visualizes nearby cooperatives to prevent overlapping operational areas.
 
 ![Potential Map](docs/03_peta_potensi_wilayah.png)
+
+*Cooperatives can drill down into individual villages on the map to view cataloged local commodities, active SDM involvement statistics, and total economic potential valuations:*
+
+![Geospatial Potential Detail](docs/08_katalog_komoditas_desa.png)
+
 
 ---
 
@@ -75,6 +85,11 @@ Provides direct **WhatsApp integration** containing pre-filled, formal supply pr
 
 ![Smart Matching](docs/04_smart_matching_buyer.png)
 
+*Each matched buyer includes contact information, the source program, and a button to initiate a direct pre-filled WhatsApp proposal pitch tailored to that buyer's requirements:*
+
+![Detailed Smart Matching & WhatsApp Pitch](docs/07_smart_matching_detail.png)
+
+
 ---
 
 ### 5. Synergy & Hilirisasi Dashboard (*Nilai Tambah & Keputusan*)
@@ -83,6 +98,11 @@ A holistic wrap-up featuring **Skor Sinergi** (a compound metric of health, regi
 *   **Proximity & Volume Analysis**: Outlines distances (km) and supply feasibility to minimize logistics overhead.
 
 ![Synergy & Hilirisasi](docs/05_nilai_tambah_keputusan.png)
+
+*Scroll down to view scalability recommendations prioritizing the highest-impact expansion ventures with computed risk-reward estimates:*
+
+![Scalability Recommendations](docs/06_rekomendasi_skalabilitas.png)
+
 
 ---
 
