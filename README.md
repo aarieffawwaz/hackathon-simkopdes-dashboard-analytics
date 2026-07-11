@@ -1,0 +1,185 @@
+# 🇮🇩 Sikora (Simkopdes Analytics) — Dashboard & Decision-Support System
+
+> **Empowering Indonesian Village Cooperatives (Koperasi Desa) through Multi-Agency Data Harmonization and AI-Driven B2G Market Synergy.**
+
+[![Laravel](https://img.shields.io/badge/Laravel-13.8-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![React](https://img.shields.io/badge/React-19.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org)
+
+---
+
+## 📌 Context & Problem Statement
+
+Indonesian village cooperatives (*Koperasi Desa / Kelurahan*) are the foundational pillars of the rural economy. However, they frequently face hurdles that prevent them from scaling and integrating into larger economic ecosystems:
+1. **Capital and Operational Health Blindspots**: Cooperatives struggle to gauge their internal health indicators against national standards, hindering their readiness for formal credit or state funding.
+2. **Unmapped Agricultural Potential**: Natural village commodities and human resource pools are documented in fragmented databases, making it difficult for cooperatives to identify regional comparative advantages.
+3. **B2G Procurement Data Silos**: Government programs (such as the *Makan Bergizi Gratis / MBG* national nutrition initiative, social welfare/bansos distribution, and healthcare supply programs) require substantial local products. Yet, local cooperatives lack direct access to demand pipelines, while government procurement offices struggle to identify qualified local cooperative suppliers.
+
+---
+
+## 💡 The Solution: Sikora (Simkopdes Analytics)
+
+**Sikora** (Sistem Informasi Koperasi Desa) bridges these gaps by acting as an intelligent **Decision-Support System (DSS)** and **B2G matching gateway**. It processes data from the Ministry of Cooperatives (Kemenkop) and cross-references it against inter-ministerial databases (Dapodik, Kemenkes, Bappenas/DTKS) to enable:
+
+*   📊 **Automated Health Diagnostics**: Calculates a weighted score (1-100) assessing cooperative viability based on 7 legal and operational criteria.
+*   🗺️ **Interactive 3D Geospatial Mapping**: Renders national village commodity yields and human resources, highlighting regional strengths relative to the whole nation.
+*   🤝 **Kora Think Pipeline (Smart Matching)**: Matches local cooperative supplies with live demand from public schools (MBG program), community clinics (Puskesmas), and social aid programs.
+*   🚀 **Value-Added Hilirisasi Simulator**: Simulates processing raw commodities into higher-margin products and connects cooperatives directly to regional off-takers via pre-generated WhatsApp pitch messages.
+
+---
+
+## 📷 Platform Walkthrough & Features
+
+### 1. Unified Authentication & Cooperative Selector
+A gateway featuring zero-friction login for demonstration. It catalogs **1,026+ active village cooperatives** across Indonesia, immediately pulling historical metadata, local coordinates, and operational histories upon selection.
+
+![Cooperative Selector](docs/01_login_koperasi.png)
+
+---
+
+### 2. Business Health Diagnostics (*Analisis Kesehatan Usaha*)
+Analyzes cooperative health across **7 core metrics** aligned with official ministerial frameworks:
+*   **Keaktifan Anggota (15%)**: Ratio of approved/active members to total registrants.
+*   **Kolektibilitas Simpanan (15%)**: Payment fulfillment rate for mandatory member savings.
+*   **Pelaksanaan RAT (20%)**: Recency and compliance of Rapat Anggota Tahunan reporting.
+*   **Aktivitas Gerai Fisik (10%)**: Number and status of active physical storefronts.
+*   **Pengelolaan Aset (15%)**: Volume of registered and verified cooperative assets.
+*   **Kelengkapan Legalitas (10%)**: Compliance verification of uploaded legal licensing documents.
+*   **Volume Usaha / Transaksi (15%)**: Cumulative sales revenue and transaction count.
+
+*Kora Think AI* translates these scores into actionable operational improvements (e.g. flagging unpaid dues, recommending RAT schedules, or legal document uploads).
+
+![Health Diagnostics](docs/02_analisis_kesehatan_usaha.png)
+
+---
+
+### 3. Geospatial Potential Mapping (*Peta Potensi Wilayah*)
+An interactive 3D map plotting neighboring villages. It displays:
+*   **Commodity Volume & SDM Involvement**: Pinpoints coordinates where agricultural yields are highest.
+*   **National Percent Rank Scoring**: Scores village potentials from 1-100 relative to all villages nationwide.
+*   **Geospatial Clustering**: Visualizes nearby cooperatives to prevent overlapping operational areas.
+
+![Potential Map](docs/03_peta_potensi_wilayah.png)
+
+---
+
+### 4. Smart Matching Buyer (*Data Buyer & Matching*)
+Connects cooperative inventories with regional institutional demand. *Kora Think Pipeline* matches categories dynamically:
+*   🍱 **Makan Bergizi Gratis (MBG)**: Connects farms to nearby school kitchens needing ingredients (e.g., spinach, eggs).
+*   🌿 **Kesehatan**: Links herbal producers (e.g., ginger, honey) to local clinics.
+*   📦 **Bansos (Social Aid)**: Matches rice, sugar, and staples to regional distribution agencies.
+
+Provides direct **WhatsApp integration** containing pre-filled, formal supply proposals listing matching commodities, volumes, and PIC contact information.
+
+![Smart Matching](docs/04_smart_matching_buyer.png)
+
+---
+
+### 5. Synergy & Hilirisasi Dashboard (*Nilai Tambah & Keputusan*)
+A holistic wrap-up featuring **Skor Sinergi** (a compound metric of health, regional potential, and buyer integration). It offers:
+*   **Actionable Value-Add Strategies**: Recommends processing strategies (e.g., packaging raw goods) to fit specific buyer requirements.
+*   **Proximity & Volume Analysis**: Outlines distances (km) and supply feasibility to minimize logistics overhead.
+
+![Synergy & Hilirisasi](docs/05_nilai_tambah_keputusan.png)
+
+---
+
+## 🛠️ Technical Architecture
+
+```mermaid
+graph TD
+    subgraph Client [React 19 Frontend]
+        UI[Inertia.js Pages] --> Component[React Component Library]
+        Component --> Map[Maplibre / Leaflet 3D Map]
+        Component --> Tailwind[TailwindCSS v4 styling]
+    end
+
+    subgraph Server [Laravel 13 Backend]
+        Controller[DashboardAnalyticsController]
+        Auth[KoperasiSessionController]
+        Middleware[EnsureKoperasiSelected]
+    end
+
+    subgraph Data [Data Layer]
+        SQLite[(SQLite DB: Local Session & Cache)]
+        PostgreSQL[(PostgreSQL DB: Kemenkop Hackathon Dataset)]
+    end
+
+    UI <-->|JSON over Inertia Bridge| Controller
+    Auth <--> Middleware
+    Controller -->|Read/Write Session| SQLite
+    Controller -->|Analytical Raw Queries| PostgreSQL
+```
+
+### Tech Stack Details
+*   **Backend Framework**: [Laravel 13.x](https://laravel.com) running on PHP 8.3+.
+*   **Frontend Library**: [React 19.x](https://react.dev) with [TypeScript](https://www.typescriptlang.org).
+*   **Rendering Bridge**: [Inertia.js v3.x](https://inertiajs.com) (single-page application feel with server-driven routing).
+*   **Styling**: [Tailwind CSS v4.0](https://tailwindcss.com) (Vite-native compiler).
+*   **Databases**:
+    *   **SQLite**: Local application cache, session validation, and prototype state.
+    *   **PostgreSQL**: Cloud hosting for the Kemenkop database, handling queries across millions of rows of national cooperative data.
+
+---
+
+## 🗄️ Database Integration
+
+Sikora operates on top of the **Kemenkop Hackathon Dataset (PostgreSQL)**, integrating multiple complex tables to formulate insights:
+
+| Table Name | Description | Key Fields Used |
+| :--- | :--- | :--- |
+| `profil_koperasi` | Master list of all registered cooperatives. | `koperasi_ref`, `nama_koperasi`, `koordinat_dibulatkan` |
+| `referensi_koperasi_wilayah` | Maps cooperatives to their operational villages. | `koperasi_ref`, `kode_wilayah` |
+| `referensi_wilayah` | National census directory of administrative regions. | `kode_wilayah`, `desa_kelurahan`, `kecamatan`, `kab_kota`, `provinsi` |
+| `referensi_komoditas_desa` | Commodity statistics per village. | `kode_wilayah`, `nama_komoditas`, `nilai_potensi_desa`, `jumlah_sdm_terlibat` |
+| `transaksi_penjualan` | Sales records for transaction volume scoring. | `koperasi_ref`, `nama_pelanggan`, `total_pembayaran` |
+| `anggota_koperasi` | Cooperative members roster. | `koperasi_ref`, `status_keanggotaan` |
+| `simpanan_anggota` | Savings payment statuses. | `koperasi_ref`, `jumlah_simpanan`, `status` (`paid`/`unpaid`) |
+| `rat_koperasi` | Rapat Anggota Tahunan registry. | `koperasi_ref`, `tahun_buku` |
+| `gerai_koperasi` | Registered retail storefronts. | `koperasi_ref`, `status_gerai` |
+| `aset_koperasi` | Asset registers for collateral validation. | `koperasi_ref`, `status` (`terverifikasi`) |
+| `dokumen_koperasi` | Compliance and legal documents. | `koperasi_ref`, `nama_dokumen` |
+
+---
+
+## 🚀 Installation & Local Setup
+
+Get the project running locally in less than 3 minutes.
+
+### Prerequisites
+*   PHP &geq; 8.3
+*   Composer
+*   Node.js (v18 or higher) & npm
+
+### Step-by-Step Setup
+
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/aarieffawwaz/hackathon-simkopdes-dashboard-analytics.git
+    cd hackathon-simkopdes-dashboard-analytics
+    ```
+
+2.  **Run the Unified Setup Command**
+    This automates dependency installations (Composer & npm), generates encryption keys, initializes the local SQLite database, runs migrations, and builds frontend assets:
+    ```bash
+    composer run setup
+    ```
+
+3.  **Start Development Environment**
+    Starts the Laravel application server and the Vite asset server concurrently:
+    ```bash
+    composer run dev
+    ```
+
+4.  **Open the Application**
+    Visit `http://localhost:8000` in your web browser.
+
+---
+
+## 👨‍💻 Developed By
+
+Built with passion for the **Kemenkop Cooperative Hackathon**.
+*   **Author**: Arief Fawwaz ([@aarieffawwaz](https://github.com/aarieffawwaz))
+*   **Deployment**: [smart-dashboard-analytics.my.id](https://smart-dashboard-analytics.my.id)
