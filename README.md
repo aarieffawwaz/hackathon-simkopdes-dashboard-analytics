@@ -181,5 +181,5 @@ Get the project running locally in less than 3 minutes.
 ## 👨‍💻 Developed By
 
 Built with passion for the **Kemenkop Cooperative Hackathon**.
-*   **Author**: Arief Fawwaz ([@aarieffawwaz](https://github.com/aarieffawwaz))
+*   **Developers**: Arfiansyah & Aarief ([@aarieffawwaz](https://github.com/aarieffawwaz))
 *   **Deployment**: [smart-dashboard-analytics.my.id](https://smart-dashboard-analytics.my.id)
