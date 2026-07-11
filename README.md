@@ -104,6 +104,40 @@ A holistic wrap-up featuring **Skor Sinergi** (a compound metric of health, regi
 ![Scalability Recommendations](docs/06_rekomendasi_skalabilitas.png)
 
 
+## 🧠 Smart Decision-Support System & Engine Logic (Kora Think)
+
+Sikora's intelligence is powered by **Kora Think**, a deterministic **Rule-Based Expert System (Symbolic AI)** and **Decision-Support System (DSS)**. Rather than relying on non-deterministic generative models which are prone to hallucinations, Kora Think uses mathematical models, statistical indexing, and keyword token-matching to provide transparent, auditable, and instant decisions.
+
+### 1. Weighted Multi-Criteria Business Health Scoring
+Kora Think evaluates cooperative viability across 7 operational pillars. The overall health score is a weighted sum:
+
+$$\text{Health Score} = \sum_{i=1}^{7} (\text{Score}_i \times \text{Weight}_i)$$
+
+Where the dimensions are defined as:
+*   **Keaktifan Anggota ($15\%$)**: Active member ratio.
+*   **Kolektibilitas Simpanan ($15\%$)**: Savings payment rate.
+*   **Pelaksanaan RAT ($20\%$)**: Reporting compliance based on recency ($S_{\text{RAT}} = 100$ if $\le 1$ year, $70$ for $2$ years, $30$ otherwise).
+*   **Aktivitas Gerai ($10\%$)**: Number of active physical outlets.
+*   **Pengelolaan Aset ($15\%$)**: Verified asset ratio.
+*   **Kelengkapan Legalitas ($10\%$)**: Count of legally compliant documents uploaded.
+*   **Volume Usaha ($15\%$)**: Transaction frequencies and sales volume.
+
+The expert system matches these scores to direct recommendation strings (e.g. suggesting urgent member approval processes if Keaktifan Anggota drops below $60\%$).
+
+### 2. Statistical Potential Pemeringkatan Desa
+To avoid arbitrary labeling of village economic potential, Kora Think computes the relative potential of a village against all villages nationwide using a statistical percentile rank over the commodity yields dataset:
+
+$$\text{Percentile Rank} = \frac{\text{Rank} - 1}{N - 1} \times 100$$
+
+*   Where $\text{Rank}$ is the rank of the target village ordered by total potential value, and $N$ is the total number of villages in Indonesia.
+*   This score ($1-100$) classifies villages into dynamic categories: **Sangat Tinggi ($85+$)**, **Tinggi ($70+$)**, **Menengah ($55+$)**, and **Perlu Dorongan ($<55$)**.
+
+### 3. Keyword Token-Based Smart Matching
+The B2G matching pipeline cross-references raw cooperative inventory list $I$ against national procurement databases $D$:
+*   It extracts the first nominal word token $T_i$ from each cooperative commodity (e.g., `"Bayam"` from `"Bayam Organik"`).
+*   It executes a substring intersection search over the procurement databases (Dapodik/BGN, SatuSehat, DTKS).
+*   If $T_i \cap D_j \neq \emptyset$, the system flags a match and formats a pre-filled pitch template, automating communication overhead.
+
 ---
 
 ## 🛠️ Technical Architecture
